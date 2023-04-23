@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница актера</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <span class="fs-4">Фильмопоиск 2.0</span>
+            </a>
+        </header>
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-lg-2 g-5">
+                <div class="col">
+                    <article>
+                        <h2 class="mb-1">{{actor.fullName}}</h2>
+                        <p>
+                        <div>Страна: {{actor.country}}</div>
+                        <div>Количество лет: {{actor.age}}</div>
+                        </p>
+                        <hr>
+                        <p>{{actor.description}}</p>
+                    </article>
+                </div>
+                <div class="col">
+                    <section>
+                        <h2>Фильмы</h2>
+
+                        {{#each films}}
+                        <div class="card film mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="/film?film_id={{this._id}}" class="card-link">
+                                        {{this.title}}
+                                    </a>
+                                </h5>
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    {{#each this.genres}}
+                                    <a href="/?genre={{this}}" class="genre-link me-1">
+                                        {{this}}
+                                    </a>
+                                    {{/each}}
+                                </h6>
+                            </div>
+                        </div>
+                        {{/each}}
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
